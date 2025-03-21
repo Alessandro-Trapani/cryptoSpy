@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func GET(url string) {
+func GET(url string, headers map[string]string) string {
 
 	client := &http.Client{}
 
@@ -15,18 +15,23 @@ func GET(url string) {
 
   if err != nil{
     fmt.Printf("ERROR : %s",err)
-    return
 
   }
   
+
   req.Header.Add("Accept", "text/plain")
   req.Header.Add("X-CoinAPI-Key", config.API_KEY)
+
+  for _,value := range headers{
+
+    req.Header.Add(value,headers[value])
+  }
+
 
   res, err := client.Do(req)
 
   if(err != nil){
     fmt.Printf("ERROR : %s",err) 
-    return
    }
 
    defer res.Body.Close()
@@ -35,8 +40,9 @@ func GET(url string) {
 
   if err != nil {
     fmt.Printf("ERROR : %s",err) 
-    return
+
   }
 
-  fmt.Println(string(body))
+
+  return string(body)
 }
