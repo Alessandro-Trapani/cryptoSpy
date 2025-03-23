@@ -1,5 +1,4 @@
 package HTTP
-
 import (
 	"cryptoSpy/config"
 	"fmt"

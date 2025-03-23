@@ -12,12 +12,12 @@ var docStyle = lipgloss.NewStyle().Margin(1, 2)
 
 type item struct {
 	title, desc string
+  asset *Asset
 }
 
 func (i item) Title() string       { return i.title }
-func (i item) Description() string { return i.desc }
+func (i item) Description() string { return i.desc } 
 func (i item) FilterValue() string { return i.title }
-
 
 
 type ListViewModel struct {
@@ -27,13 +27,17 @@ type ListViewModel struct {
 }
 
 
-func NewListViewModel(items map[string]string, title string) *ListViewModel {
-
+func NewListViewModel(items map[*Asset]string, title string) *ListViewModel {
     listItems := []list.Item{}
-    for key, value := range items {
-        listItems = append(listItems, item{title: key, desc: value})
+    for asset, value := range items {
+        // Create an item with the asset pointer included
+        listItems = append(listItems, item{
+            title: asset.AssetID, 
+            desc: value,
+            asset: asset,  // This is the key part - storing the asset pointer
+        })
     }
-
+    
     m := &ListViewModel{
         List: list.New(listItems, list.NewDefaultDelegate(), 0, 0),
         id:   ListViewID,
@@ -58,7 +62,7 @@ switch msg := msg.(type) {
 			return m, tea.Quit
     
 		} else if m.List.FilterState() != list.Filtering && msg.String() == "enter" {
-			selected := m.List.SelectedItem()
+			selected := m.List.SelectedItem().(item)
       return m, func() tea.Msg {
        
 				return SwitchingViewMsg{
