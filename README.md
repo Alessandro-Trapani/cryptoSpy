@@ -67,7 +67,7 @@ cryptoSpy.exe  # On Windows
 - **Up/Down Arrows** or **j/k**: Navigate through cryptocurrency list
 - **Enter**: Select cryptocurrency to view detailed information
 - **/** : Open search input to filter cryptocurrencies
-- **Ctrl+C**: Exit the application
+- **esc**: Exit the application
 
 ## Keyboard Shortcuts
 
@@ -77,7 +77,7 @@ cryptoSpy.exe  # On Windows
 | j/k | Navigate list |
 | Enter | View crypto details |
 | / | Search/Filter |
-| Ctrl+C | Exit |
+| esc | Exit |
 
 ## Detailed Information Displayed
 
