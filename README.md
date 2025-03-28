@@ -3,6 +3,9 @@
 ## Overview
 
 cryptoSpy is a terminal application built with Golang that allows users to browse and explore cryptocurrency information. Using Charm's TUI (Text User Interface) libraries, this app provides an interactive interface for exploring cryptocurrency data from the CoinAPI.
+![image](https://github.com/user-attachments/assets/8fcf3652-9d00-4f26-8110-eea48b91fad6)
+![image](https://github.com/user-attachments/assets/bb188318-0a26-4c61-a9de-b860ec1720a2)
+
 
 ## Features
 
